@@ -1,0 +1,13 @@
+all: quadratic_roots
+
+quadratic_roots: main.o quadraticroots.o
+	gcc main.o quadraticroots.o -o quadratic_roots -Wall -g -lm
+
+main.o: main.c quadraticroots.h
+	gcc -c main.c -Wall -g -lm
+
+quadraticroots.o: quadraticroots.c quadraticroots.h
+	gcc -c quadraticroots.c -Wall -g -lm
+
+clean:
+	rm -f *.o quadratic_roots
