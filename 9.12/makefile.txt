@@ -1,0 +1,31 @@
+all: safeadd safesubtract safemultiply safedivide
+
+safeadd: safeint.o safeadd.o
+	gcc -Wall -Wextra -std=c11 -o safeadd safeint.o safeadd.o
+
+safesubtract: safeint.o safesubtract.o
+	gcc -Wall -Wextra -std=c11 -o safesubtract safeint.o safesubtract.o
+
+safemultiply: safeint.o safemultiply.o
+	gcc -Wall -Wextra -std=c11 -o safemultiply safeint.o safemultiply.o
+
+safedivide: safeint.o safedivide.o
+	gcc -Wall -Wextra -std=c11 -o safedivide safeint.o safedivide.o
+
+safeint.o: safeint.c safeint.h
+	gcc -Wall -Wextra -std=c11 -c safeint.c
+
+safeadd.o: safeadd.c safeint.h
+	gcc -Wall -Wextra -std=c11 -c safeadd.c
+
+safesubtract.o: safesubtract.c safeint.h
+	gcc -Wall -Wextra -std=c11 -c safesubtract.c
+
+safemultiply.o: safemultiply.c safeint.h
+	gcc -Wall -Wextra -std=c11 -c safemultiply.c
+
+safedivide.o: safedivide.c safeint.h
+	gcc -Wall -Wextra -std=c11 -c safedivide.c
+
+clean:
+	rm -f *.o safeadd safesubtract safemultiply safedivide
